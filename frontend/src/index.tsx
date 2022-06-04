@@ -12,7 +12,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const cable = createConsumer(process.env.REACT_APP_GRAPHQL_ACTIONCABLE_URL)
+const encodedEmail = btoa(`${process.env.REACT_APP_USER_EMAIL}`)
+
+const cable = createConsumer(`${process.env.REACT_APP_GRAPHQL_ACTIONCABLE_URL}?token=${encodedEmail}`)
 
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GRAPHQL_PATH,

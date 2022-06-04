@@ -4,6 +4,7 @@ class GraphqlChannel < ApplicationCable::Channel
   end
 
   def execute(data)
+    puts "User #{current_user.full_name} connected for #{data["operationName"]}"
     result = execute_query(data)
 
     payload = {

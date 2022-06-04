@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def notify_graphql_of_delete
     ChatAppSchema.subscriptions.trigger(graphql_event_name('deleted'), { }, self.id)
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
